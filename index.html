@@ -3,114 +3,268 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Óscar · Lo que viene</title>
+<title>Para Óscar Ordóñez · El Futuro de tu Consultoría</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
 <style>
+:root {
+  /* Paleta 1: Autoridad Corporativa */
+  --primary: #0F172A;
+  --secondary: #334155;
+  --accent: #2563EB;
+  --bg-main: #FFFFFF;
+  --bg-section: #F8FAFC;
+  --text: #1E293B;
+  --text-light: #64748B;
+  --border: #E2E8F0;
+  --shadow: rgba(15, 23, 42, 0.1);
+}
+
+[data-theme="premium"] {
+  /* Paleta 2: Inocuidad Premium */
+  --primary: #064E3B;
+  --secondary: #065F46;
+  --accent: #D97706;
+  --bg-main: #FAFAF9;
+  --bg-section: #FFFFFF;
+  --text: #1C1917;
+  --text-light: #78716C;
+  --border: #E7E5E4;
+  --shadow: rgba(6, 78, 59, 0.1);
+}
+
+[data-theme="minimal"] {
+  /* Paleta 3: Minimalismo Tecnológico */
+  --primary: #111827;
+  --secondary: #6B7280;
+  --accent: #059669;
+  --bg-main: #FFFFFF;
+  --bg-section: #F3F4F6;
+  --text: #1F2937;
+  --text-light: #9CA3AF;
+  --border: #E5E7EB;
+  --shadow: rgba(17, 24, 39, 0.08);
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  font-family: 'Georgia', serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: #2d3748;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-main);
+  color: var(--text);
   line-height: 1.8;
-  min-height: 100vh;
+  font-size: 18px;
+  transition: background 0.3s ease;
 }
 
 .container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 60px 40px;
 }
 
+@media (max-width: 768px) {
+  .container { padding: 30px 20px; }
+  body { font-size: 16px; }
+}
+
+/* Theme Switcher */
+.theme-switcher {
+  position: sticky;
+  top: 0;
+  background: var(--bg-main);
+  border-bottom: 2px solid var(--border);
+  padding: 20px 40px;
+  margin: -60px -40px 60px -40px;
+  z-index: 100;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+@media (max-width: 768px) {
+  .theme-switcher {
+    margin: -30px -20px 30px -20px;
+    padding: 16px 20px;
+    gap: 12px;
+  }
+}
+
+.theme-btn {
+  background: var(--bg-section);
+  border: 2px solid var(--border);
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-btn:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.theme-btn.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.theme-btn .color-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+/* Hero */
 .hero {
-  background: white;
-  border-radius: 20px;
-  padding: 50px 40px;
-  margin-bottom: 30px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
   text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(102,126,234,0.1) 0%, transparent 70%);
-  animation: pulse 4s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.1); opacity: 0.8; }
+  margin-bottom: 80px;
+  padding: 60px 40px;
+  background: var(--bg-section);
+  border-radius: 16px;
+  border: 1px solid var(--border);
 }
 
 .hero h1 {
-  font-size: 3em;
-  color: #667eea;
+  font-family: 'Merriweather', serif;
+  font-size: 3.5em;
+  font-weight: 900;
+  color: var(--primary);
   margin-bottom: 20px;
-  position: relative;
-  z-index: 1;
+  line-height: 1.2;
 }
 
 .hero .subtitle {
-  font-size: 1.3em;
-  color: #718096;
-  font-style: italic;
-  position: relative;
-  z-index: 1;
+  font-size: 1.4em;
+  color: var(--text-light);
+  font-weight: 500;
 }
 
+@media (max-width: 768px) {
+  .hero { padding: 40px 20px; margin-bottom: 40px; }
+  .hero h1 { font-size: 2em; }
+  .hero .subtitle { font-size: 1.1em; }
+}
+
+/* Global Controls */
+.global-controls {
+  background: var(--bg-section);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 60px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.global-controls button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.global-controls button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.global-controls button.stop {
+  background: var(--secondary);
+}
+
+.global-controls label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.global-controls input[type="range"] {
+  width: 140px;
+  cursor: pointer;
+}
+
+/* Sections */
 .section {
-  background: white;
+  background: var(--bg-section);
+  border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 40px;
-  margin-bottom: 24px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-  position: relative;
-  transition: transform 0.3s ease;
+  padding: 60px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 20px var(--shadow);
+  transition: all 0.3s ease;
 }
 
 .section:hover {
   transform: translateY(-4px);
+  box-shadow: 0 8px 30px var(--shadow);
+}
+
+@media (max-width: 768px) {
+  .section { padding: 30px 24px; margin-bottom: 24px; }
 }
 
 .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
-  border-bottom: 3px solid #667eea;
-  padding-bottom: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid var(--accent);
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .section h2 {
-  font-size: 2em;
-  color: #667eea;
+  font-family: 'Merriweather', serif;
+  font-size: 2.2em;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.3;
   flex: 1;
 }
 
+@media (max-width: 768px) {
+  .section h2 { font-size: 1.6em; }
+}
+
 .audio-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--accent);
   color: white;
   border: none;
-  padding: 12px 20px;
-  border-radius: 50px;
-  font-size: 1.1em;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 15px;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 8px;
+  font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102,126,234,0.4);
+  white-space: nowrap;
 }
 
 .audio-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(102,126,234,0.6);
 }
 
 .audio-btn.playing {
@@ -118,97 +272,76 @@ body {
 }
 
 @keyframes pulseBtn {
-  0%, 100% { box-shadow: 0 4px 15px rgba(102,126,234,0.4); }
-  50% { box-shadow: 0 4px 25px rgba(102,126,234,0.8); }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
 
 .section p {
-  font-size: 1.15em;
-  margin-bottom: 16px;
-  color: #4a5568;
-}
-
-.section .hook {
-  font-size: 1.4em;
-  font-weight: bold;
-  color: #2d3748;
+  text-align: justify;
+  hyphens: auto;
   margin-bottom: 20px;
-  border-left: 4px solid #667eea;
-  padding-left: 20px;
-}
-
-.section .revelation {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  color: white;
-  padding: 20px;
-  border-radius: 12px;
-  margin: 20px 0;
-  font-size: 1.2em;
-  text-align: center;
-  font-weight: bold;
-}
-
-.section .cliffhanger {
-  background: #fef5e7;
-  border-left: 4px solid #f39c12;
-  padding: 16px;
-  margin-top: 20px;
-  font-style: italic;
-  color: #7f8c8d;
-  font-size: 1.1em;
-}
-
-.global-controls {
-  background: white;
-  border-radius: 16px;
-  padding: 24px;
-  margin-bottom: 30px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.global-controls button {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 50px;
-  font-size: 1.1em;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-.global-controls button:hover {
-  transform: scale(1.05);
-}
-
-.global-controls button.stop {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-}
-
-.global-controls label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: bold;
-  color: #4a5568;
-}
-
-.global-controls input[type="range"] {
-  width: 120px;
+  color: var(--text);
+  font-size: 18px;
 }
 
 @media (max-width: 768px) {
-  .hero h1 { font-size: 2em; }
-  .section { padding: 24px; }
-  .section h2 { font-size: 1.5em; }
-  .section-header { flex-direction: column; gap: 12px; }
-  .global-controls { flex-direction: column; }
+  .section p { font-size: 16px; }
+}
+
+.section .hook {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 24px;
+  padding-left: 24px;
+  border-left: 4px solid var(--accent);
+  line-height: 1.5;
+}
+
+.section .revelation {
+  background: var(--primary);
+  color: white;
+  padding: 28px;
+  border-radius: 12px;
+  margin: 32px 0;
+  font-size: 1.2em;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.section .cliffhanger {
+  background: var(--bg-main);
+  border-left: 4px solid var(--accent);
+  padding: 20px 24px;
+  margin-top: 28px;
+  font-style: italic;
+  color: var(--text-light);
+  font-size: 1.1em;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 80px;
+  padding: 40px;
+  background: var(--bg-section);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+
+.footer p {
+  color: var(--text-light);
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.footer .signature {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 18px;
+  margin-top: 16px;
 }
 </style>
 </head>
@@ -216,11 +349,29 @@ body {
 
 <div class="container">
   
-  <div class="hero">
-    <h1>Para Óscar Ordóñez</h1>
-    <p class="subtitle">Lo que viene. Lo que cambia todo.</p>
+  <!-- Theme Switcher -->
+  <div class="theme-switcher">
+    <button class="theme-btn active" onclick="setTheme('default')">
+      <span class="color-dot" style="background: #0F172A;"></span>
+      Autoridad Corporativa
+    </button>
+    <button class="theme-btn" onclick="setTheme('premium')">
+      <span class="color-dot" style="background: #064E3B;"></span>
+      Inocuidad Premium
+    </button>
+    <button class="theme-btn" onclick="setTheme('minimal')">
+      <span class="color-dot" style="background: #111827;"></span>
+      Minimalismo Tecnológico
+    </button>
   </div>
 
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Para Óscar Ordóñez</h1>
+    <p class="subtitle">El Futuro de tu Consultoría. Diseñado para ti.</p>
+  </div>
+
+  <!-- Global Controls -->
   <div class="global-controls">
     <button onclick="readAll()">🔊 Leer Todo</button>
     <button class="stop" onclick="stopAudio()">⏹ Parar</button>
@@ -236,84 +387,99 @@ body {
     </label>
   </div>
 
+  <!-- Section 1 -->
   <div class="section" id="s1">
     <div class="section-header">
       <h2>1. El Conflicto</h2>
       <button class="audio-btn" onclick="readSection(1)">🔊 Escuchar</button>
     </div>
     <p class="hook">Llevas años haciendo lo mismo. Escribes, escribes, escribes.</p>
-    <p>Cada reporte es una montaña de palabras. Datos que se repiten. Frases que ya escribiste mil veces. Clientes que necesitan lo mismo pero con nombres diferentes.</p>
-    <p>Y al final del día, cuando deberías estar descansando, todavía estás frente a la computadora, buscando las palabras exactas para describir un hallazgo que ya describiste hace tres meses.</p>
+    <p>Cada reporte es una montaña de palabras. Datos que se repiten. Frases que ya escribiste mil veces. Clientes que necesitan lo mismo pero con nombres diferentes. Y al final del día, cuando deberías estar descansando, todavía estás frente a la computadora, buscando las palabras exactas para describir un hallazgo que ya describiste hace tres meses.</p>
+    <p>Recuerdo la última vez que hablé contigo. Me dijiste: "Juan Carlos, ya estoy cansado de escribir lo mismo una y otra vez. Sé lo que tengo que decir, pero me toma horas ponerlo en papel." Esa frase se quedó conmigo. Porque no es solo tu problema, es el problema de todos los consultores senior del mundo.</p>
     <div class="cliffhanger">Pero esto está a punto de cambiar.</div>
   </div>
 
+  <!-- Section 2 -->
   <div class="section" id="s2">
     <div class="section-header">
       <h2>2. La Revelación</h2>
       <button class="audio-btn" onclick="readSection(2)">🔊 Escuchar</button>
     </div>
     <p class="hook">¿Y si el software escribiera por ti?</p>
-    <p>Imagina esto: llegas a la planta, ves un problema, tomas una foto. El sistema reconoce el problema, busca la cláusula correcta del SQF, redacta el hallazgo en lenguaje profesional, sugiere la recomendación, y genera el reporte completo.</p>
+    <p>Imagina esto: son las 9 de la mañana. Llegas a la planta de "Alimentos del Valle". Caminas por la línea de producción, ves un problema: una lámpara sin protección sobre la banda transportadora. Sacas tu celular, tomas una foto, y en 30 segundos el sistema hace todo el trabajo pesado.</p>
+    <p>El software reconoce que es un problema de "Materia Extraña". Busca automáticamente la cláusula 11.7.3 del SQF. Redacta el hallazgo en lenguaje profesional: "Se observó falta de protección en luminarias del área de proceso, lo cual representa un riesgo de contaminación por materia extraña." Sugiere la recomendación: "Implementar programa de protección de luminarias con materiales de seguridad alimentaria." Y genera el reporte completo, con tu logo, con los datos de la empresa, con la fecha y el folio.</p>
     <div class="revelation">Tú solo revisas. Tú solo apruebas. Tú solo firmas.</div>
-    <p>Esto no es ciencia ficción. Esto es SIGIA Pro. Y lo estamos construyendo para ti.</p>
+    <p>Esto no es ciencia ficción. Esto es SIGIA Pro. Y lo estamos construyendo para ti, Óscar. Para que tu experiencia de 30 años se convierta en clicks, no en horas de escritura.</p>
   </div>
 
+  <!-- Section 3 -->
   <div class="section" id="s3">
     <div class="section-header">
       <h2>3. La Máquina del Tiempo</h2>
       <button class="audio-btn" onclick="readSection(3)">🔊 Escuchar</button>
     </div>
     <p class="hook">Cada hora que ahorras es una hora de vida.</p>
-    <p>Un reporte que antes te tomaba 4 horas ahora se genera en 30 minutos. No porque el software sea mágico, sino porque elimina lo repetitivo.</p>
-    <p>Los datos de la empresa ya están guardados. Las cláusulas ya están redactadas. Las recomendaciones ya existen en el sistema. Tú solo conectas los puntos.</p>
-    <p>Y cuando terminas, el sistema genera un documento profesional, con tu logo, con las firmas en el lugar correcto, listo para enviar al cliente.</p>
+    <p>Hagamos las cuentas. Un reporte completo que antes te tomaba 4 horas, ahora se genera en 30 minutos. No porque el software sea mágico, sino porque elimina lo repetitivo. Los datos de la empresa ya están guardados en el sistema. Las cláusulas del SQF ya están redactadas con el lenguaje correcto. Las recomendaciones ya existen en el banco de frases profesionales.</p>
+    <p>Tú solo conectas los puntos. Y cuando terminas, el sistema genera un documento Word o PDF, con formato profesional, con las firmas en el lugar correcto, listo para enviar al cliente por correo.</p>
+    <p>Pero aquí viene lo importante: no estamos hablando solo de ahorrar tiempo. Estamos hablando de recuperar tu vida. De poder salir de la oficina a las 5 de la tarde en lugar de las 8. De poder dedicar ese tiempo a tu familia, a tus hobbies, a descansar. Porque tu conocimiento vale oro, pero tu tiempo vale más.</p>
     <div class="cliffhanger">Pero espera, hay más.</div>
   </div>
 
+  <!-- Section 4 -->
   <div class="section" id="s4">
     <div class="section-header">
       <h2>4. El Editor Inteligente</h2>
       <button class="audio-btn" onclick="readSection(4)">🔊 Escuchar</button>
     </div>
     <p class="hook">Como Word, pero pensado para consultores.</p>
-    <p>Seleccionas el texto y lo resaltas en amarillo. Lo pones en rojo para alertas. Lo haces más grande para títulos. Lo subrayas para énfasis.</p>
-    <p>Pero aquí viene lo interesante: cada bloque de hallazgo tiene su propio editor. Puedes ajustar el texto, agregar detalles, quitar lo que no aplica. Y el sistema mantiene el formato profesional automáticamente.</p>
-    <p>Porque tu tiempo es valioso. Y tu experiencia merece herramientas a la altura.</p>
+    <p>Imagina que estás revisando el hallazgo sobre la lámpara sin protección. El sistema ya redactó el texto, pero tú quieres agregar un detalle específico: "Lámpara ubicada a 2 metros sobre la banda transportadora principal, línea 2." Seleccionas el texto con el mouse, lo resaltas en amarillo para que el cliente lo vea de inmediato. O lo pones en rojo si es una no conformidad crítica. O lo haces más grande si es un título importante.</p>
+    <p>Cada bloque de hallazgo tiene su propio editor independiente. Puedes ajustar el texto, agregar detalles, quitar lo que no aplica. Y el sistema mantiene el formato profesional automáticamente. No tienes que preocuparte por los márgenes, por los saltos de página, por la numeración. Todo eso lo hace el software.</p>
+    <p>Porque tu tiempo es valioso. Y tu experiencia merece herramientas a la altura. No más peleas con Word a las 11 de la noche.</p>
   </div>
 
+  <!-- Section 5 -->
   <div class="section" id="s5">
     <div class="section-header">
       <h2>5. La Voz que te Acompaña</h2>
       <button class="audio-btn" onclick="readSection(5)">🔊 Escuchar</button>
     </div>
     <p class="hook">Porque a veces, leer cansa.</p>
-    <p>Cada sección de esta presentación tiene un botón de audio. Cada sección del software también lo tendrá. Puedes escuchar el reporte completo mientras caminas, mientras descansas, mientras tomas café.</p>
-    <p>Puedes ajustar la velocidad si la voz es muy lenta. Puedes ajustar el volumen. Puedes parar cuando quieras.</p>
-    <p>Porque la tecnología debe adaptarse a ti. No tú a la tecnología.</p>
+    <p>Esta presentación que estás viendo ahora mismo tiene un botón de audio en cada sección. Cada sección del software también lo tendrá. Puedes escuchar el reporte completo mientras caminas por la planta, mientras descansas en el coche, mientras tomas café en la oficina del cliente.</p>
+    <p>Puedes ajustar la velocidad si la voz es muy lenta. Puedes ajustar el volumen. Puedes parar cuando quieras. Y lo mejor: puedes enviar el reporte al cliente en formato web interactivo, y él también podrá escucharlo.</p>
+    <p>Porque la tecnología debe adaptarse a ti. No tú a la tecnología. Y porque sabemos que a veces, después de un día largo, lo último que quieres es leer 20 páginas de reporte.</p>
   </div>
 
+  <!-- Section 6 -->
   <div class="section" id="s6">
     <div class="section-header">
       <h2>6. El Futuro en tus Manos</h2>
       <button class="audio-btn" onclick="readSection(6)">🔊 Escuchar</button>
     </div>
     <p class="hook">Esto es solo el comienzo.</p>
-    <p>Estamos construyendo algo más grande. Un sistema que aprende de tus reportes. Que sugiere cláusulas basándose en tus notas. Que genera procedimientos y capacitaciones automáticamente.</p>
-    <p>Un sistema que exporta el reporte como una web interactiva que puedes enviar al cliente por correo. Que se abre en su navegador como una página web profesional, sin necesidad de instalar nada.</p>
+    <p>Estamos construyendo algo más grande. Un sistema que aprende de tus reportes. Que sugiere cláusulas basándose en tus notas. Que genera procedimientos y capacitaciones automáticamente cuando detecta un hallazgo recurrente.</p>
+    <p>Un sistema que exporta el reporte como una web interactiva que puedes enviar al cliente por correo. Que se abre en su navegador como una página web profesional, sin necesidad de instalar nada. Que el cliente puede compartir con su equipo, imprimir, o archivar.</p>
+    <p>Un sistema que integra OCR para leer etiquetas en chino, ruso o cualquier idioma. Que analiza fotos y sugiere checklist de riesgos visuales que el ojo humano podría pasar por alto. Que genera planes de acción correctiva con plazos automáticos según la severidad del hallazgo.</p>
     <div class="revelation">Tu experiencia. Nuestra tecnología. El futuro de la consultoría.</div>
-    <p>Y todo esto, Óscar, lo estamos construyendo para ti. Porque mereces herramientas que respeten tu tiempo, tu conocimiento y tu legado.</p>
+    <p>Y todo esto, Óscar, lo estamos construyendo para ti. Porque mereces herramientas que respeten tu tiempo, tu conocimiento y tu legado. Porque después de 30 años en la industria, mereces algo mejor que pelear con Word.</p>
   </div>
 
+  <!-- Section 7 -->
   <div class="section" id="s7">
     <div class="section-header">
       <h2>7. Lo que Sigue</h2>
       <button class="audio-btn" onclick="readSection(7)">🔊 Escuchar</button>
     </div>
     <p class="hook">Pronto tendrás acceso al sistema completo.</p>
-    <p>Stack Labs está terminando los últimos detalles. Cada botón, cada función, cada palabra está pensada para ti.</p>
-    <p>Cuando esté listo, te enviaremos el acceso. Y entonces, Óscar, podrás ver con tus propios ojos lo que el software puede hacer.</p>
-    <p>Mientras tanto, descansa. Porque el futuro ya está en camino.</p>
-    <div class="revelation">Con aprecio, Juan Carlos Pérez Martínez · Stack Labs</div>
+    <p>Stack Labs está terminando los últimos detalles. Cada botón, cada función, cada palabra está pensada para ti. Estamos probando el sistema con consultores reales, ajustando la interfaz, asegurándonos de que sea intuitivo incluso si nunca has usado software avanzado.</p>
+    <p>Cuando esté listo, te enviaremos el acceso. Y entonces, Óscar, podrás ver con tus propios ojos lo que el software puede hacer. Podrás probarlo, usarlo, y decidir si es lo que necesitas.</p>
+    <p>Mientras tanto, descansa. Porque el futuro ya está en camino. Y cuando llegue, vas a preguntarte cómo viviste sin él.</p>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>Con aprecio y respeto,</p>
+    <p class="signature">Juan Carlos Pérez Martínez</p>
+    <p>Stack Labs · Desarrollo de Software Avanzado</p>
   </div>
 
 </div>
@@ -323,6 +489,20 @@ let audioSpeed = 1;
 let audioVolume = 1;
 let currentUtterance = null;
 
+// Theme Switcher
+function setTheme(theme) {
+  if (theme === 'default') {
+    document.documentElement.removeAttribute('data-theme');
+  } else {
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+  
+  // Update active button
+  document.querySelectorAll('.theme-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.closest('.theme-btn').classList.add('active');
+}
+
+// Audio Controls
 function updateSpeed(val) {
   audioSpeed = parseFloat(val);
   document.getElementById('speedVal').textContent = val + 'x';
