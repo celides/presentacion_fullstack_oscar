@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Óscar · Lo que viene</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Georgia', serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #2d3748;
+  line-height: 1.8;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.hero {
+  background: white;
+  border-radius: 20px;
+  padding: 50px 40px;
+  margin-bottom: 30px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(102,126,234,0.1) 0%, transparent 70%);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.hero h1 {
+  font-size: 3em;
+  color: #667eea;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero .subtitle {
+  font-size: 1.3em;
+  color: #718096;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+}
+
+.section {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.section:hover {
+  transform: translateY(-4px);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  border-bottom: 3px solid #667eea;
+  padding-bottom: 16px;
+}
+
+.section h2 {
+  font-size: 2em;
+  color: #667eea;
+  flex: 1;
+}
+
+.audio-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-size: 1.1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102,126,234,0.4);
+}
+
+.audio-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(102,126,234,0.6);
+}
+
+.audio-btn.playing {
+  animation: pulseBtn 1.5s infinite;
+}
+
+@keyframes pulseBtn {
+  0%, 100% { box-shadow: 0 4px 15px rgba(102,126,234,0.4); }
+  50% { box-shadow: 0 4px 25px rgba(102,126,234,0.8); }
+}
+
+.section p {
+  font-size: 1.15em;
+  margin-bottom: 16px;
+  color: #4a5568;
+}
+
+.section .hook {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #2d3748;
+  margin-bottom: 20px;
+  border-left: 4px solid #667eea;
+  padding-left: 20px;
+}
+
+.section .revelation {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+  font-size: 1.2em;
+  text-align: center;
+  font-weight: bold;
+}
+
+.section .cliffhanger {
+  background: #fef5e7;
+  border-left: 4px solid #f39c12;
+  padding: 16px;
+  margin-top: 20px;
+  font-style: italic;
+  color: #7f8c8d;
+  font-size: 1.1em;
+}
+
+.global-controls {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.global-controls button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 1.1em;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.global-controls button:hover {
+  transform: scale(1.05);
+}
+
+.global-controls button.stop {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.global-controls label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  color: #4a5568;
+}
+
+.global-controls input[type="range"] {
+  width: 120px;
+}
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2em; }
+  .section { padding: 24px; }
+  .section h2 { font-size: 1.5em; }
+  .section-header { flex-direction: column; gap: 12px; }
+  .global-controls { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  
+  <div class="hero">
+    <h1>Para Óscar Ordóñez</h1>
+    <p class="subtitle">Lo que viene. Lo que cambia todo.</p>
+  </div>
+
+  <div class="global-controls">
+    <button onclick="readAll()">🔊 Leer Todo</button>
+    <button class="stop" onclick="stopAudio()">⏹ Parar</button>
+    <label>
+      Velocidad:
+      <input type="range" id="speed" min="0.5" max="2" step="0.1" value="1" oninput="updateSpeed(this.value)">
+      <span id="speedVal">1.0x</span>
+    </label>
+    <label>
+      Volumen:
+      <input type="range" id="volume" min="0" max="1" step="0.1" value="1" oninput="updateVolume(this.value)">
+      <span id="volVal">100%</span>
+    </label>
+  </div>
+
+  <div class="section" id="s1">
+    <div class="section-header">
+      <h2>1. El Conflicto</h2>
+      <button class="audio-btn" onclick="readSection(1)">🔊 Escuchar</button>
+    </div>
+    <p class="hook">Llevas años haciendo lo mismo. Escribes, escribes, escribes.</p>
+    <p>Cada reporte es una montaña de palabras. Datos que se repiten. Frases que ya escribiste mil veces. Clientes que necesitan lo mismo pero con nombres diferentes.</p>
+    <p>Y al final del día, cuando deberías estar descansando, todavía estás frente a la computadora, buscando las palabras exactas para describir un hallazgo que ya describiste hace tres meses.</p>
+    <div class="cliffhanger">Pero esto está a punto de cambiar.</div>
+  </div>
+
+  <div class="section" id="s2">
+    <div class="section-header">
+      <h2>2. La Revelación</h2>
+      <button class="audio-btn" onclick="readSection(2)">🔊 Escuchar</button>
+    </div>
+    <p class="hook">¿Y si el software escribiera por ti?</p>
+    <p>Imagina esto: llegas a la planta, ves un problema, tomas una foto. El sistema reconoce el problema, busca la cláusula correcta del SQF, redacta el hallazgo en lenguaje profesional, sugiere la recomendación, y genera el reporte completo.</p>
+    <div class="revelation">Tú solo revisas. Tú solo apruebas. Tú solo firmas.</div>
+    <p>Esto no es ciencia ficción. Esto es SIGIA Pro. Y lo estamos construyendo para ti.</p>
+  </div>
+
+  <div class="section" id="s3">
+    <div class="section-header">
+      <h2>3. La Máquina del Tiempo</h2>
+      <button class="audio-btn" onclick="readSection(3)">🔊 Escuchar</button>
+    </div>
+    <p class="hook">Cada hora que ahorras es una hora de vida.</p>
+    <p>Un reporte que antes te tomaba 4 horas ahora se genera en 30 minutos. No porque el software sea mágico, sino porque elimina lo repetitivo.</p>
+    <p>Los datos de la empresa ya están guardados. Las cláusulas ya están redactadas. Las recomendaciones ya existen en el sistema. Tú solo conectas los puntos.</p>
+    <p>Y cuando terminas, el sistema genera un documento profesional, con tu logo, con las firmas en el lugar correcto, listo para enviar al cliente.</p>
+    <div class="cliffhanger">Pero espera, hay más.</div>
+  </div>
+
+  <div class="section" id="s4">
+    <div class="section-header">
+      <h2>4. El Editor Inteligente</h2>
+      <button class="audio-btn" onclick="readSection(4)">🔊 Escuchar</button>
+    </div>
+    <p class="hook">Como Word, pero pensado para consultores.</p>
+    <p>Seleccionas el texto y lo resaltas en amarillo. Lo pones en rojo para alertas. Lo haces más grande para títulos. Lo subrayas para énfasis.</p>
+    <p>Pero aquí viene lo interesante: cada bloque de hallazgo tiene su propio editor. Puedes ajustar el texto, agregar detalles, quitar lo que no aplica. Y el sistema mantiene el formato profesional automáticamente.</p>
+    <p>Porque tu tiempo es valioso. Y tu experiencia merece herramientas a la altura.</p>
+  </div>
+
+  <div class="section" id="s5">
+    <div class="section-header">
+      <h2>5. La Voz que te Acompaña</h2>
+      <button class="audio-btn" onclick="readSection(5)">🔊 Escuchar</button>
+    </div>
+    <p class="hook">Porque a veces, leer cansa.</p>
+    <p>Cada sección de esta presentación tiene un botón de audio. Cada sección del software también lo tendrá. Puedes escuchar el reporte completo mientras caminas, mientras descansas, mientras tomas café.</p>
+    <p>Puedes ajustar la velocidad si la voz es muy lenta. Puedes ajustar el volumen. Puedes parar cuando quieras.</p>
+    <p>Porque la tecnología debe adaptarse a ti. No tú a la tecnología.</p>
+  </div>
+
+  <div class="section" id="s6">
+    <div class="section-header">
+      <h2>6. El Futuro en tus Manos</h2>
+      <button class="audio-btn" onclick="readSection(6)">🔊 Escuchar</button>
+    </div>
+    <p class="hook">Esto es solo el comienzo.</p>
+    <p>Estamos construyendo algo más grande. Un sistema que aprende de tus reportes. Que sugiere cláusulas basándose en tus notas. Que genera procedimientos y capacitaciones automáticamente.</p>
+    <p>Un sistema que exporta el reporte como una web interactiva que puedes enviar al cliente por correo. Que se abre en su navegador como una página web profesional, sin necesidad de instalar nada.</p>
+    <div class="revelation">Tu experiencia. Nuestra tecnología. El futuro de la consultoría.</div>
+    <p>Y todo esto, Óscar, lo estamos construyendo para ti. Porque mereces herramientas que respeten tu tiempo, tu conocimiento y tu legado.</p>
+  </div>
+
+  <div class="section" id="s7">
+    <div class="section-header">
+      <h2>7. Lo que Sigue</h2>
+      <button class="audio-btn" onclick="readSection(7)">🔊 Escuchar</button>
+    </div>
+    <p class="hook">Pronto tendrás acceso al sistema completo.</p>
+    <p>Stack Labs está terminando los últimos detalles. Cada botón, cada función, cada palabra está pensada para ti.</p>
+    <p>Cuando esté listo, te enviaremos el acceso. Y entonces, Óscar, podrás ver con tus propios ojos lo que el software puede hacer.</p>
+    <p>Mientras tanto, descansa. Porque el futuro ya está en camino.</p>
+    <div class="revelation">Con aprecio, Juan Carlos Pérez Martínez · Stack Labs</div>
+  </div>
+
+</div>
+
+<script>
+let audioSpeed = 1;
+let audioVolume = 1;
+let currentUtterance = null;
+
+function updateSpeed(val) {
+  audioSpeed = parseFloat(val);
+  document.getElementById('speedVal').textContent = val + 'x';
+}
+
+function updateVolume(val) {
+  audioVolume = parseFloat(val);
+  document.getElementById('volVal').textContent = Math.round(val * 100) + '%';
+}
+
+function speak(text, callback) {
+  if (!('speechSynthesis' in window)) {
+    alert('Tu navegador no soporta síntesis de voz');
+    return;
+  }
+  
+  speechSynthesis.cancel();
+  
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'es-MX';
+  utterance.rate = audioSpeed;
+  utterance.volume = audioVolume;
+  utterance.pitch = 1;
+  
+  if (callback) {
+    utterance.onend = callback;
+  }
+  
+  currentUtterance = utterance;
+  speechSynthesis.speak(utterance);
+}
+
+function readSection(num) {
+  const section = document.getElementById('s' + num);
+  const title = section.querySelector('h2').textContent;
+  const paragraphs = section.querySelectorAll('p, .hook, .revelation, .cliffhanger');
+  
+  let text = title + '. ';
+  paragraphs.forEach(p => {
+    text += p.textContent + ' ';
+  });
+  
+  const btn = section.querySelector('.audio-btn');
+  btn.classList.add('playing');
+  
+  speak(text, () => {
+    btn.classList.remove('playing');
+  });
+}
+
+function readAll() {
+  const sections = [1, 2, 3, 4, 5, 6, 7];
+  let index = 0;
+  
+  function readNext() {
+    if (index < sections.length) {
+      const num = sections[index];
+      const section = document.getElementById('s' + num);
+      const title = section.querySelector('h2').textContent;
+      const paragraphs = section.querySelectorAll('p, .hook, .revelation, .cliffhanger');
+      
+      let text = title + '. ';
+      paragraphs.forEach(p => {
+        text += p.textContent + ' ';
+      });
+      
+      const btn = section.querySelector('.audio-btn');
+      btn.classList.add('playing');
+      
+      speak(text, () => {
+        btn.classList.remove('playing');
+        index++;
+        setTimeout(readNext, 500);
+      });
+    }
+  }
+  
+  readNext();
+}
+
+function stopAudio() {
+  speechSynthesis.cancel();
+  document.querySelectorAll('.audio-btn').forEach(btn => {
+    btn.classList.remove('playing');
+  });
+}
+</script>
+
+</body>
+</html>
